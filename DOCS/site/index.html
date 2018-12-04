@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="None">
+        
+        
+        <link rel="shortcut icon" href="img/favicon.ico">
+        <title>dlist</title>
+        <link href="css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="css/font-awesome.min.css" rel="stylesheet">
+        <link href="css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="js/jquery-1.10.2.min.js" defer></script>
+        <script src="js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body class="homepage">
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+
+                <!-- Collapsed navigation -->
+                <div class="navbar-header">
+                    <a class="navbar-brand" href=".">dlist</a>
+                </div>
+
+                <!-- Expanded navigation -->
+                <div class="navbar-collapse collapse">
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#dlist">dlist</a></li>
+            <li><a href="#functions">Functions</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="dlist">dlist</h1>
+<p>A list of dict.<br>
+Each dict-element has only one key.<br>
+Such as: <code>[ {k1:v1},{k2:v2},{k3,v3}]</code></p>
+<h2 id="functions">Functions</h2>
+<h3 id="is_dlistobj">&nbsp;&nbsp;&nbsp;&nbsp;<code>is_dlist(obj)</code><br></h3>
+<pre><code>        from dlist import *
+        rslts[0] = (is_dlist([]) == True)
+        rslts[1] = (is_dlist([{1:'a'},{2:'b'}]) == True)
+        rslts[2] = (is_dlist([{1:'a',2:'b'},{3:'c',4:'d'}]) == False)
+</code></pre>
+<h3 id="dict2dlistthis_dictkwargs">&nbsp;&nbsp;&nbsp;&nbsp;<code>dict2dlist(this_dict,**kwargs)</code><br></h3>
+<pre><code>        from dlist import *
+        d = {1:2,3:4,5:6,7:8}
+        rslts[3] = (dict2dlist(d) == [{1: 2}, {3: 4}, {5: 6}, {7: 8}])
+</code></pre>
+<h3 id="dlist2dictdict_listkwargs">&nbsp;&nbsp;&nbsp;&nbsp;<code>dlist2dict(dict_list,**kwargs)</code><br></h3>
+<pre><code>                from dlist import *
+                d = {1:2,3:4,5:6,7:8}
+                dl = [{1: 2}, {3: 4}, {5: 6}, {7: 8}]
+                rslts[4] = (dlist2dict(dl) == d)
+</code></pre>
+<h3 id="kvlist2dlistklistvlistkwargs">&nbsp;&nbsp;&nbsp;&nbsp;<code>kvlist2dlist(klist,vlist,**kwargs)</code><br></h3>
+<h3 id="dlist2kvlistdict_listkwargs">&nbsp;&nbsp;&nbsp;&nbsp;<code>dlist2kvlist(dict_list,**kwargs)</code><br></h3>
+<pre><code>                    from dlist import *
+                    d = {1:2,3:4,5:6,7:8}
+                    dl = [{1: 2}, {3: 4}, {5: 6}, {7: 8}]
+                    kl = [1,3,5,7]
+                    vl = [2,4,6,8]
+                    rslts[5] = (dlist2kvlist(dl) == (kl,vl))
+                    rslts[6] = (kvlist2dlist(kl,vl) == dl)
+</code></pre>
+<h3 id="extenddict_list_1dict_list_2kwargs">&nbsp;&nbsp;&nbsp;&nbsp;<code>extend(dict_list_1,dict_list_2,**kwargs)</code><br></h3>
+<pre><code>                    from dlist import *
+                    dl1 = [{1:2},{3:4}]
+                    dl2 = [{5:6},{7:8}]
+                    extend(dl1,dl2)
+                    rslts[7] = (dl1 == [{1: 2}, {3: 4}, {5: 6}, {7: 8}])
+</code></pre>
+<h3 id="prextenddict_list_1dict_list_2kwargs">&nbsp;&nbsp;&nbsp;&nbsp;<code>prextend(dict_list_1,dict_list_2,**kwargs)</code><br></h3>
+<pre><code>                    dl1 = [{1:2},{3:4}]
+                    dl2 = [{5:6},{7:8}]
+                    prextend(dl1,dl2)
+                    rslts[8] = (dl1 == [{5: 6}, {7: 8},{1: 2}, {3: 4}])
+</code></pre>
+<h3 id="concatdict_list_1dict_list_2kwargs">&nbsp;&nbsp;&nbsp;&nbsp;<code>concat(dict_list_1,dict_list_2,**kwargs)</code><br></h3>
+<pre><code>                    dl1 = [{1:2},{3:4}]
+                    dl2 = [{5:6},{7:8}]
+                    dl = concat(dl1,dl2)
+                    rslts[9] = (dl == [{1: 2}, {3: 4}, {5: 6}, {7: 8}])
+</code></pre>
+<h3 id="first_islicedict_listkwargs">&nbsp;&nbsp;&nbsp;&nbsp;<code>first_islice(dict_list,**kwargs)</code><br></h3>
+<pre><code>                    from dlist import *
+                    dl = [{1:2},{'a':'x'},{'a':'y'},{3:'b'},{5:'b'},{'c':'c'},{'c':'c'}]
+                    rslts[10] = (first_islice(dl,key='a') == [1, 2])
+                    rslts[11] = (first_islice(dl,mode='value',value='b') == [3, 4])
+                    rslts[12] = (first_islice(dl,mode='kv',key='c',value='c') == [5, 6])
+</code></pre>
+<h3 id="last_islicedict_listkwargs">&nbsp;&nbsp;&nbsp;&nbsp;<code>last_islice(dict_list,**kwargs)</code><br></h3>
+<pre><code>                    from dlist import *
+                    dl = [{1:2},{'a':'x'},{'a':'y'},{3:'b'},{5:'b'},{'c':'c'},{'c':'c'},{'a':'x'},{'a':'y'},{3:'b'},{5:'b'},{'c':'c'},{'c':'c'}]
+                    rslts[13] = (last_islice(dl,key='a') == [7, 8])
+                    rslts[14] = (last_islice(dl,mode='value',value='b') == [9, 10])
+                    rslts[15] = (last_islice(dl,mode='kv',key='c',value='c') == [11, 12])
+</code></pre>
+<h3 id="all_islicedict_listkwargs">&nbsp;&nbsp;&nbsp;&nbsp;<code>all_islice(dict_list,**kwargs)</code><br></h3>
+<pre><code>                    from dlist import *
+                    dl = [{1:2},{'a':'x'},{'a':'y'},{3:'b'},{5:'b'},{'c':'c'},{'c':'c'},{'a':'x'},{'a':'y'},{3:'b'},{5:'b'},{'c':'c'},{'c':'c'}]
+                    rslts[16] = (all_islice(dl,key='a') == [[1, 2], [7, 8]])
+                    rslts[17] = (all_islice(dl,mode='value',value='b') == [[3, 4], [9, 10]])
+                    rslts[18] = (all_islice(dl,mode='kv',key='c',value='c') == [[5, 6], [11, 12]])
+</code></pre>
+<h3 id="indexesdict_listvaluekwargs">&nbsp;&nbsp;&nbsp;&nbsp;<code>indexes(dict_list,value,**kwargs)</code><br></h3>
+<pre><code>                    from dlist import *
+                    dl = [{1:2},{'a':'x'},{'a':'y'},{3:'b'},{5:'b'},{'c':'c'},{'c':'c'},{'a':'x'},{'a':'y'},{3:'b'},{5:'b'},{'c':'c'},{'c':'c'}]
+                    rslts[19] = (indexes(dl,key='a') == [1, 2, 7, 8]])
+                    rslts[20] = (indexes(dl,mode='value',value='b') == [3, 4, 9, 10])
+                    rslts[21] = (indexes(dl,mode='kv',key='a',value='y') == [2,8])
+</code></pre>
+<h3 id="first_indexdict_listkwargs">&nbsp;&nbsp;&nbsp;&nbsp;<code>first_index(dict_list,**kwargs)</code><br></h3>
+<pre><code>                    from dlist import *
+                    dl = [{1:2},{'a':'x'},{'a':'y'},{3:'b'},{5:'b'},{'c':'c'},{'c':'c'},{'a':'x'},{'a':'y'},{3:'b'},{5:'b'},{'c':'c'},{'c':'c'}]
+                    rslts[22] = (first_index(dl,key='a') == 1)
+                    rslts[23] = (first_index(dl,mode='value',value='b') == 3)
+                    rslts[24] = (first_index(dl,mode='kv',key='a',value='y') == 2)
+</code></pre>
+<h3 id="last_indexdict_listkwargs">&nbsp;&nbsp;&nbsp;&nbsp;<code>last_index(dict_list,**kwargs)</code><br></h3>
+<pre><code>                    from dlist import *
+                    dl = [{1:2},{'a':'x'},{'a':'y'},{3:'b'},{5:'b'},{'c':'c'},{'c':'c'},{'a':'x'},{'a':'y'},{3:'b'},{5:'b'},{'c':'c'},{'c':'c'}]
+                    rslts[25] = (last_index(dl,key='a') == 8)
+                    rslts[26] = (last_index(dl,mode='value',value='b') == 10)
+                    rslts[27] = (last_index(dl,mode='kv',key='a',value='y') == 8)
+</code></pre>
+<h3 id="appenddict_listkeyvaluekwargs">&nbsp;&nbsp;&nbsp;&nbsp;<code>append(dict_list,key,value,**kwargs)</code><br></h3>
+<h3 id="prependdict_listkeyvaluekwargs">&nbsp;&nbsp;&nbsp;&nbsp;<code>prepend(dict_list,key,value,**kwargs)</code><br></h3>
+<pre><code>                    from dlist import *
+                    dl = [{1:'a'},{2:'b'},{3:'c'}]
+                    rslts[28] = (append(dl,'k','v') == [{1: 'a'}, {2: 'b'}, {3: 'c'}, {'k': 'v'}])
+                    dl = [{1:'a'},{2:'b'},{3:'c'}]
+                    rslts[29] = (prepend(dl,'k','v') == [{'k': 'v'}, {1: 'a'}, {2: 'b'}, {3: 'c'}])
+</code></pre>
+<h3 id="cleardict_listkwargs">&nbsp;&nbsp;&nbsp;&nbsp;<code>clear(dict_list,**kwargs)</code><br></h3>
+<h3 id="insertdict_listindexkeyvaluekwargs">&nbsp;&nbsp;&nbsp;&nbsp;<code>insert(dict_list,index,key,value,**kwargs)</code><br></h3>
+<h3 id="insert_dlistdict_list_1indexdict_list_2kwargs">&nbsp;&nbsp;&nbsp;&nbsp;<code>insert_dlist(dict_list_1,index,dict_list_2,**kwargs)</code><br></h3>
+<pre><code>                    from dlist import *
+                    dl = [{1:'a'},{2:'b'},{3:'c'}]
+                    rslts[30] = (insert(dl,1,'k','v') == [{1: 'a'}, {'k': 'v'},{2: 'b'}, {3: 'c'}])
+                    dl = [{1:'a'},{2:'b'},{3:'c'}]
+                    dl2 = [{'k1':'v1'},{'k2':'v2'}]
+                    rslts[31] = (insert_dlist(dl,1,dl2) == [{1: 'a'}, {'k1':'v1'},{'k2':'v2'},{'k': 'v'},{2: 'b'}, {3: 'c'}])
+</code></pre>
+<h3 id="includedict_listkwargs">&nbsp;&nbsp;&nbsp;&nbsp;<code>include(dict_list,**kwargs)</code><br></h3>
+<pre><code>                    from dlist import *
+                    dl = [{1:2},{'a':'x'},{'a':'y'},{3:'b'},{5:'b'},{'c':'c'},{'c':'c'},{'a':'x'},{'a':'y'},{3:'b'},{5:'b'},{'c':'c'},{'c':'c'}]
+                    rslts[32] = (include(dl,key='b') == False)
+                    rslts[33] = (include(dl,mode='value',value='b') == True)
+                    rslts[34] = (include(dl,mode='kv',key='a',value='y') == True)
+</code></pre>
+<h3 id="countdict_listkwargs">&nbsp;&nbsp;&nbsp;&nbsp;<code>count(dict_list,**kwargs)</code><br></h3>
+<pre><code>                    from dlist import *
+                    dl = [{1:2},{'a':'x'},{'a':'y'},{3:'b'},{5:'b'},{'c':'c'},{'c':'c'},{'a':'x'},{'a':'y'},{3:'b'},{5:'b'},{'c':'c'},{'c':'c'}]
+                    rslts[35] = (count(dl,key='a') == 4)
+                    rslts[36] = (count(dl,mode='value',value='b') == 4)
+                    rslts[37] = (count(dl,mode='kv',key='a',value='y') == 2)
+</code></pre>
+<h3 id="popdict_listkwargs">&nbsp;&nbsp;&nbsp;&nbsp;<code>pop(dict_list,**kwargs)</code><br></h3>
+<h3 id="pop_rangedict_liststartendkwargs">&nbsp;&nbsp;&nbsp;&nbsp;<code>pop_range(dict_list,start,end,**kwargs)</code><br></h3>
+<h3 id="pop_seqsdict_listseqs_setkwargs">&nbsp;&nbsp;&nbsp;&nbsp;<code>pop_seqs(dict_list,seqs_set,**kwargs)</code><br></h3>
+<pre><code>                    from dlist import *
+                    dl = [{1:2},{'a':'x'},{'a':'y'},{3:'b'},{5:'b'},{'c':'c'},{'c':'c'},{'a':'x'},{'a':'y'},{3:'b'},{5:'b'},{'c':'c'},{'c':'c'}]
+                    pop(dl,index=1)
+                    dl = [{1:2},{'a':'x'},{'a':'y'},{3:'b'},{5:'b'},{'c':'c'},{'c':'c'},{'a':'x'},{'a':'y'},{3:'b'},{5:'b'},{'c':'c'},{'c':'c'}]
+                    rslts[38] = (pop(dl,mode='key',key='a') == [{'a': 'x'}, {'a': 'y'}, {'a': 'x'}, {'a': 'y'}])
+                    rslts[39] = (dl == [{1: 2}, {3: 'b'}, {5: 'b'}, {'c': 'c'}, {'c': 'c'}, {3: 'b'}, {5: 'b'}, {'c': 'c'}, {'c': 'c'}] )
+                    dl = [{1:2},{'a':'x'},{'a':'y'},{3:'b'},{5:'b'},{'c':'c'},{'c':'c'},{'a':'x'},{'a':'y'},{3:'b'},{5:'b'},{'c':'c'},{'c':'c'}]
+                    rslts[40] = (pop_range(dl,1,4) == [{'a': 'x'}, {'a': 'y'}, {3: 'b'}])
+                    rslts[41] = (dl == [{1: 2}, {5: 'b'}, {'c': 'c'}, {'c': 'c'}, {'a': 'x'}, {'a': 'y'}, {3: 'b'}, {5: 'b'}, {'c': 'c'}, {'c': 'c'}])
+                    dl = [{1:2},{'a':'x'},{'a':'y'},{3:'b'},{5:'b'},{'c':'c'},{'c':'c'},{'a':'x'},{'a':'y'},{3:'b'},{5:'b'},{'c':'c'},{'c':'c'}]
+                    rslts[42] = (pop_seqs(dl,[0,2,4]) == [{1: 2}, {'a': 'y'}, {5: 'b'}])
+                    rslts[43] = (dl = [{'a': 'x'}, {3: 'b'}, {'c': 'c'}, {'c': 'c'}, {'a': 'x'}, {'a': 'y'}, {3: 'b'}, {5: 'b'}, {'c': 'c'}, {'c': 'c'}])
+</code></pre>
+<h3 id="rm_firstdict_listkwargs">&nbsp;&nbsp;&nbsp;&nbsp;<code>rm_first(dict_list,**kwargs)</code><br></h3>
+<pre><code>                    from dlist import *
+                    dl = [{1:2},{'a':'x'},{'a':'y'},{3:'b'},{5:'b'},{'c':'c'},{'c':'c'},{'a':'x'},{'a':'y'},{3:'b'},{5:'b'},{'c':'c'},{'c':'c'}]
+                    rslts[44] = (rm_first(dl,key='a') == [{1: 2}, {'a': 'y'}, {3: 'b'}, {5: 'b'}, {'c': 'c'}, {'c': 'c'}, {'a': 'x'}, {'a': 'y'}, {3: 'b'}, {5: 'b'}, {'c': 'c'}, {'c': 'c'}])
+                    dl = [{1:2},{'a':'x'},{'a':'y'},{3:'b'},{5:'b'},{'c':'c'},{'c':'c'},{'a':'x'},{'a':'y'},{3:'b'},{5:'b'},{'c':'c'},{'c':'c'}]
+                    rslts[45] = (rm_first(dl,mode='value',value='b') == [{1: 2}, {'a': 'x'}, {'a': 'y'}, {5: 'b'}, {'c': 'c'}, {'c': 'c'}, {'a': 'x'}, {'a': 'y'}, {3: 'b'}, {5: 'b'}, {'c': 'c'}, {'c': 'c'}])
+                    dl = [{1:2},{'a':'x'},{'a':'y'},{3:'b'},{5:'b'},{'c':'c'},{'c':'c'},{'a':'x'},{'a':'y'},{3:'b'},{5:'b'},{'c':'c'},{'c':'c'}]
+                    rslts[46] = (rm_first(dl,mode='kv',key='a',value='y') == [{1: 2}, {'a': 'x'}, {3: 'b'}, {5: 'b'}, {'c': 'c'}, {'c': 'c'}, {'a': 'x'}, {'a': 'y'}, {3: 'b'}, {5: 'b'}, {'c': 'c'}, {'c': 'c'}])
+</code></pre>
+<h3 id="rm_lastdict_listkwargs">&nbsp;&nbsp;&nbsp;&nbsp;<code>rm_last(dict_list,**kwargs)</code><br></h3>
+<pre><code>                    from dlist import *
+                    dl = [{1:2},{'a':'x'},{'a':'y'},{3:'b'},{5:'b'},{'c':'c'},{'c':'c'},{'a':'x'},{'a':'y'},{3:'b'},{5:'b'},{'c':'c'},{'c':'c'}]
+                    rslts[47] = (rm_last(dl,key='a') == [{1: 2}, {'a': 'x'}, {'a': 'y'}, {3: 'b'}, {5: 'b'}, {'c': 'c'}, {'c': 'c'}, {'a': 'x'}, {3: 'b'}, {5: 'b'}, {'c': 'c'}, {'c': 'c'}])
+                    dl = [{1:2},{'a':'x'},{'a':'y'},{3:'b'},{5:'b'},{'c':'c'},{'c':'c'},{'a':'x'},{'a':'y'},{3:'b'},{5:'b'},{'c':'c'},{'c':'c'}]
+                    rslts[48] = (rm_last(dl,mode='value',value='b') == [{1: 2}, {'a': 'x'}, {'a': 'y'}, {3: 'b'}, {5: 'b'}, {'c': 'c'}, {'c': 'c'}, {'a': 'x'}, {'a': 'y'}, {3: 'b'}, {'c': 'c'}, {'c': 'c'}])
+                    dl = [{1:2},{'a':'x'},{'a':'y'},{3:'b'},{5:'b'},{'c':'c'},{'c':'c'},{'a':'x'},{'a':'y'},{3:'b'},{5:'b'},{'c':'c'},{'c':'c'}]
+                    rslts[49] = (rm_last(dl,mode='kv',key='a',value='y') == [{1: 2}, {'a': 'x'}, {'a': 'y'}, {3: 'b'}, {5: 'b'}, {'c': 'c'}, {'c': 'c'}, {'a': 'x'}, {3: 'b'}, {5: 'b'}, {'c': 'c'}, {'c': 'c'}])
+</code></pre>
+<h3 id="rm_alldict_listkwargs">&nbsp;&nbsp;&nbsp;&nbsp;<code>rm_all(dict_list,**kwargs)</code><br></h3>
+<pre><code>                    from dlist import *
+                    dl = [{1:2},{'a':'x'},{'a':'y'},{3:'b'},{5:'b'},{'c':'c'},{'c':'c'},{'a':'x'},{'a':'y'},{3:'b'},{5:'b'},{'c':'c'},{'c':'c'}]
+                    rslts[47] = (rm_all(dl,key='a') == [{1: 2}, {3: 'b'}, {5: 'b'}, {'c': 'c'}, {'c': 'c'}, {3: 'b'}, {5: 'b'}, {'c': 'c'}, {'c': 'c'}])
+                    dl = [{1:2},{'a':'x'},{'a':'y'},{3:'b'},{5:'b'},{'c':'c'},{'c':'c'},{'a':'x'},{'a':'y'},{3:'b'},{5:'b'},{'c':'c'},{'c':'c'}]
+                    rslts[48] = (rm_all(dl,mode='value',value='b') == [{1: 2}, {'a': 'x'}, {'a': 'y'}, {'c': 'c'}, {'c': 'c'}, {'a': 'x'}, {'a': 'y'}, {'c': 'c'}, {'c': 'c'}])
+                    dl = [{1:2},{'a':'x'},{'a':'y'},{3:'b'},{5:'b'},{'c':'c'},{'c':'c'},{'a':'x'},{'a':'y'},{3:'b'},{5:'b'},{'c':'c'},{'c':'c'}]
+                    rslts[49] = (rm_all(dl,mode='kv',key='a',value='y') == [{1: 2}, {'a': 'x'}, {3: 'b'}, {5: 'b'}, {'c': 'c'}, {'c': 'c'}, {'a': 'x'}, {3: 'b'}, {5: 'b'}, {'c': 'c'}, {'c': 'c'}])
+</code></pre>
+<h3 id="reversedict_listkwargs">&nbsp;&nbsp;&nbsp;&nbsp;<code>reverse(dict_list,**kwargs)</code><br></h3>
+<pre><code>                    from dlist import *
+                    dl = [{1:2},{'a':'x'},{'a':'y'},{3:'b'},{5:'b'},{'c':'c'},{'c':'c'},{'a':'x'},{'a':'y'},{3:'b'},{5:'b'},{'c':'c'},{'c':'c'}]
+                    rslts[53] =(reverse(dl)  == [{'c': 'c'}, {'c': 'c'}, {5: 'b'}, {3: 'b'}, {'a': 'y'}, {'a': 'x'}, {'c': 'c'}, {'c': 'c'}, {5: 'b'}, {3: 'b'}, {'a': 'y'}, {'a': 'x'}, {1: 2}])
+</code></pre>
+<h3 id="sortdict_listkwargs">&nbsp;&nbsp;&nbsp;&nbsp;<code>sort(dict_list,**kwargs)</code><br></h3>
+<pre><code>                    from dlist import *
+                    dl = [{1:2},{'a':'x'},{'a':'y'},{3:'b'},{5:'b'},{'c':'c'},{'c':'c'},{'a':'x'},{'a':'y'},{3:'b'},{5:'b'},{'c':'c'},{'c':'c'}]
+                    rslts[54] = (sort(dl)  == [{1: 2}, {3: 'b'}, {3: 'b'}, {5: 'b'}, {5: 'b'}, {'a': 'x'}, {'a': 'x'}, {'a': 'y'}, {'a': 'y'}, {'c': 'c'}, {'c': 'c'}, {'c': 'c'}, {'c': 'c'}])
+                    dl = [{1:2},{'a':'x'},{'a':'y'},{3:'b'},{5:'b'},{'c':'c'},{'c':'c'},{'a':'x'},{'a':'y'},{3:'b'},{5:'b'},{'c':'c'},{'c':'c'}]
+                    rslts[55] = (sort(dl,mode='vk') == [{1: 2}, {3: 'b'}, {3: 'b'}, {5: 'b'}, {5: 'b'}, {'c': 'c'}, {'c': 'c'}, {'c': 'c'}, {'c': 'c'}, {'a': 'x'}, {'a': 'x'}, {'a': 'y'}, {'a': 'y'}])
+                    dl = [{1:2},{'a':'x'},{'a':'y'},{3:'b'},{5:'b'},{'c':'c'},{'c':'c'},{'a':'x'},{'a':'y'},{3:'b'},{5:'b'},{'c':'c'},{'c':'c'}]
+                    rslts[56] = (sort(dl,mode='key')  == [{1: 2}, {3: 'b'}, {3: 'b'}, {5: 'b'}, {5: 'b'}, {'a': 'x'}, {'a': 'y'}, {'a': 'x'}, {'a': 'y'}, {'c': 'c'}, {'c': 'c'}, {'c': 'c'}, {'c': 'c'}])
+                    dl = [{1:2},{'a':'x'},{'a':'y'},{3:'b'},{5:'b'},{'c':'c'},{'c':'c'},{'a':'x'},{'a':'y'},{3:'b'},{5:'b'},{'c':'c'},{'c':'c'}]
+                    rslts[57] = (sort(dl,mode='value') == [{1: 2}, {3: 'b'}, {5: 'b'}, {3: 'b'}, {5: 'b'}, {'c': 'c'}, {'c': 'c'}, {'c': 'c'}, {'c': 'c'}, {'a': 'x'}, {'a': 'x'}, {'a': 'y'}, {'a': 'y'}])
+</code></pre>
+<h3 id="comprisedict_list1dict_list2kwargs">&nbsp;&nbsp;&nbsp;&nbsp;<code>comprise(dict_list1,dict_list2,**kwargs)</code><br></h3>
+<pre><code>                    from dlist import *
+                    dl1 = [{1:2},{3:4},{5:6},{7:8}]
+                    dl2 = [{3:4},{5:6}]
+                    rslts[58] = (comprise(dl1,dl2) == True)
+                    rslts[59] = (comprise(dl1,dl2,strict=True) == False)
+</code></pre>
+<h3 id="tuple2dictt">&nbsp;&nbsp;&nbsp;&nbsp;<code>tuple2dict(t)</code><br></h3>
+<h3 id="dict2tupled">&nbsp;&nbsp;&nbsp;&nbsp;<code>dict2tuple(d)</code><br></h3>
+<pre><code>                    from dlist import *
+                    d = {1:2}
+                    rslts[62] = (dict2tuple(d) == (1, 2))
+                    t = (1, 2)
+                    rslts[63] = (tuple2dict(t) == {1:2})
+</code></pre>
+<h3 id="dlist2tlistdl">&nbsp;&nbsp;&nbsp;&nbsp;<code>dlist2tlist(dl)</code><br></h3>
+<h3 id="tlist2dlisttl">&nbsp;&nbsp;&nbsp;&nbsp;<code>tlist2dlist(tl)</code><br></h3>
+<pre><code>                    from dlist import *
+                    dl = [{1:2},{3:4},{5:6},{7:8}]
+                    rslts[60] = (dlist2tlist(dl) == [(1, 2), (3, 4), (5, 6), (7, 8)])
+                    tl = [(1, 2), (3, 4), (5, 6), (7, 8)]
+                    rslts[61] = (tlist2dlist(tl) == [{1:2},{3:4},{5:6},{7:8}])
+</code></pre>
+<h3 id="cmp_deled1d2kwargs">&nbsp;&nbsp;&nbsp;&nbsp;<code>cmp_dele(d1,d2,**kwargs)</code><br></h3>
+<pre><code>                    from dlist import *
+                    d1 = {1:2}
+                    d2 = {2:1}
+                    rslts[64] = (cmp_dele(d1,d2,mode='key') == -1)
+                    rslts[65] = (cmp_dele(d1,d2,mode='value') == 1)
+                    d3 = {3:4}
+                    d4 = {3:5}
+                    rslts[66] = (cmp_dele(d3,d4,mode='kv') == -1)
+                    d5 = {7:6}
+                    d6 = {8:6}
+                    rslts[67] = (cmp_dele(d5,d6,mode='vk') == 1)
+                    rslts[68] = (cmp_dele(d5,d5) == 0)
+</code></pre></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = ".",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="js/base.js" defer></script>
+        <script src="search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
+
+<!--
+MkDocs version : 1.0.4
+Build Date UTC : 2018-12-04 17:36:09
+-->
