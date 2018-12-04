@@ -4,6 +4,9 @@ A list of dict.<br>
 Each dict-element has only one key.<br>
 Such as: `[ {k1:v1},{k2:v2},{k3,v3}]`
 
+## Documents
+https://ihgazni2.github.io/dlist/
+
 ## Functions
 ###   &nbsp;&nbsp;&nbsp;&nbsp;`is_dlist(obj)`<br>
 			from dlist import *
