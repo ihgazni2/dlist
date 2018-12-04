@@ -5,13 +5,14 @@ with open('README.md') as f:
 
 setup(
       name="dlist",
-      version = "0.51",
+      version = "0.52",
       description="A list of dict , each dict has only one key.",
       author="dapeli",
       url="https://github.com/ihgazni2/dlist",
       author_email='terryinzaghi@163.com', 
       license="MIT",
       long_description = long_description,
+      long_description_content_type='text/markdown',
       classifiers=[
           'Environment :: Console',
           'Environment :: Web Environment',
