@@ -1,11 +1,11 @@
 from setuptools import setup, find_packages
 
-with open('README.md') as f:
+with open('README.md','r+') as f:
     long_description = f.read()
 
 setup(
       name="dlist",
-      version = "0.52",
+      version = "0.53",
       description="A list of dict , each dict has only one key.",
       author="dapeli",
       url="https://github.com/ihgazni2/dlist",

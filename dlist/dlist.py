@@ -648,7 +648,7 @@ def clear(dict_list,**kwargs):
         new.clear()
     return(new)
 
-def copy(dict_list,**kwargs):
+def _copy(dict_list,**kwargs):
     if('check' in kwargs):
         check = kwargs['check']
     else:
